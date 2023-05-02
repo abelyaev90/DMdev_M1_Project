@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.administrator</OriginalElement>
+  <nodes>
+    <node x="-111.0" y="372.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.administrator</node>
+    <node x="-102.375" y="-93.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.reader</node>
+    <node x="370.625" y="-49.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian</node>
+    <node x="170.875" y="163.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.booking_card</node>
+    <node x="539.75" y="207.5">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian_room</node>
+    <node x="570.75" y="-38.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.room</node>
+    <node x="-111.0" y="163.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.issue_card</node>
+    <node x="128.62500000000003" y="-82.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book</node>
+    <node x="348.75" y="185.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book_places</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.booking_card" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian" relationship="REFERENCES">
+      <point x="52.333333333333336" y="-82.0" />
+      <point x="301.70833333333337" y="123.0" />
+      <point x="458.125" y="123.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.issue_card" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book" relationship="REFERENCES">
+      <point x="52.5" y="-82.0" />
+      <point x="46.5" y="133.0" />
+      <point x="239.625" y="133.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book_places" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book" relationship="REFERENCES">
+      <point x="-42.75" y="-60.0" />
+      <point x="391.5" y="133.0" />
+      <point x="239.625" y="133.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.booking_card" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book" relationship="REFERENCES">
+      <point x="0.0" y="-82.0" />
+      <point x="249.375" y="133.0" />
+      <point x="239.625" y="133.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian_room" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.room" relationship="REFERENCES">
+      <point x="39.5" y="-37.5" />
+      <point x="658.25" y="113.0" />
+      <point x="644.25" y="113.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.booking_card" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.reader" relationship="REFERENCES">
+      <point x="-52.33333333333334" y="-82.0" />
+      <point x="197.04166666666669" y="143.0" />
+      <point x="3.125" y="143.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.book_places" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.room" relationship="REFERENCES">
+      <point x="42.75" y="-60.0" />
+      <point x="477.0" y="113.0" />
+      <point x="644.25" y="113.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian_room" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.librarian" relationship="REFERENCES">
+      <point x="-39.5" y="-37.5" />
+      <point x="579.25" y="123.0" />
+      <point x="458.125" y="123.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.issue_card" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:library_repository.library_storage.reader" relationship="REFERENCES">
+      <point x="-52.5" y="-82.0" />
+      <point x="-58.5" y="143.0" />
+      <point x="3.125" y="143.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="303.5" y="188.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

@@ -1,0 +1,189 @@
+--Б   И   Б   Л   И   О   Т   Е   К   А--
+
+CREATE DATABASE library_repository;
+
+CREATE SCHEMA library_storage;
+
+
+CREATE TABLE IF NOT EXISTS administrator
+(
+    id       SERIAL PRIMARY KEY,
+    login    VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS reader
+(
+    id           SERIAL PRIMARY KEY,
+    login        VARCHAR(45) NOT NULL,
+    password     VARCHAR(45) NOT NULL,
+    name         VARCHAR(45) NOT NULL,
+    passport     VARCHAR(45) NOT NULL,
+    address      VARCHAR(45) NOT NULL,
+    number_phone VARCHAR(45)
+);
+
+--DROP TABLE reader;
+
+CREATE TABLE IF NOT EXISTS room
+(
+    id   INT PRIMARY KEY,
+    name VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS librarian
+(
+    id       SERIAL PRIMARY KEY,
+    login    VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS book
+(
+    id               INT PRIMARY KEY,
+    author           VARCHAR(45) NOT NULL,
+    publication_year VARCHAR(45) NOT NULL,
+    publisher        VARCHAR(45) NOT NULL,
+    name             VARCHAR(125) NOT NULL,
+    isbn             VARCHAR(45)
+);
+
+--ALTER TABLE book ALTER COLUMN name TYPE VARCHAR(125);
+--ALTER TABLE book ALTER COLUMN id TYPE INT;
+
+
+DROP TABLE book;
+
+--«Библиотекари — Читальные залы»
+CREATE TABLE IF NOT EXISTS librarian_room
+(
+    id_room      INT NOT NULL,
+    id_librarian INT NOT NULL,
+    PRIMARY KEY (id_room, id_librarian),
+    CONSTRAINT id_lr_room
+        FOREIGN KEY (id_room)
+            REFERENCES room (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT id_lr_librarian
+        FOREIGN KEY (id_librarian)
+            REFERENCES librarian (id)
+            ON DELETE NO ACTION
+            ON UPDATE CASCADE
+);
+
+--«Карточки выдачи книг»
+CREATE TABLE IF NOT EXISTS booking_card
+(
+    id           SERIAL PRIMARY KEY,
+    id_reader    INT  NOT NULL,
+    id_book      INT  NOT NULL,
+    id_librarian INT  NOT NULL,
+    time         DATE NOT NULL,
+    period       INTERVAL,
+    CONSTRAINT id_bc_reader
+        FOREIGN KEY (id_reader)
+            REFERENCES reader (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT id_bc_book
+        FOREIGN KEY (id_book)
+            REFERENCES book (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT id_bc_librarian
+        FOREIGN KEY (id_librarian)
+            REFERENCES librarian (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+);
+
+--ALTER TABLE booking_card DROP period;
+--ALTER TABLE booking_card ADD COLUMN period DATE;
+
+--«Карточки бронирования книг»
+CREATE TABLE if NOT EXISTS issue_card
+(
+    id             SERIAL PRIMARY KEY,
+    id_reader      INT       NOT NULL,
+    id_book        INT       NOT NULL,
+    time           TIMESTAMP NOT NULL,
+    period         INTERVAL,
+    issue_cardscol VARCHAR(45),
+    CONSTRAINT id_ic_reader
+        FOREIGN KEY (id_reader)
+            REFERENCES reader (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT id_ic_book
+        FOREIGN KEY (id_book)
+            REFERENCES book (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+);
+
+
+--DROP TABLE book_places;
+
+--«Размещение книг»
+CREATE TABLE IF NOT EXISTS book_places
+(
+    id_book      INT NULL,
+    id_room      INT NOT NULL,
+    quantity     INT NOT NULL,
+    shell_number INT NOT NULL,
+    PRIMARY KEY (id_book, id_room),
+    CONSTRAINT id_bp_book
+        FOREIGN KEY (id_book)
+            REFERENCES book (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT id_bp_room
+        FOREIGN KEY (id_room)
+            REFERENCES room (id)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION
+);
+
+
+INSERT INTO administrator (login, password) VALUES ('lena', '12345');
+INSERT INTO administrator (login, password) VALUES ( 'petya', '54321');
+
+
+INSERT INTO reader (login, password, name, passport, address, number_phone) VALUES ('alex', 123, 'alexandr', 0101, 'Mosow', 262626);
+INSERT INTO reader (login, password, name, passport, address, number_phone) VALUES ('van', 123, 'ivan', 0202, 'Piter', 363636);
+
+
+INSERT INTO room (id, name) VALUES (1, 'Зал С++');
+INSERT INTO room (id, name) VALUES (2, 'Зал проектирование');
+
+UPDATE room SET name = 'философии Java' WHERE name = 'Зал С++';
+UPDATE room SET name = 'мир ООП' WHERE name = 'Зал проектирование';
+
+INSERT INTO librarian (login, password) VALUES ('vova', '123');
+INSERT INTO librarian(login, password) VALUES ('sveta', '123');
+
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (1, ' Джошуа Блох', 1998, 'СПб.: Питер', 'Эффективная Java', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (2, 'Robert C. Martin', 2013, 'Вильямс', 'Clean Code: A Handbook of Agile Software Craftsmanship', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (3, 'Кей С. Хорстманн', 2020, 'Вильямс', 'Java. Библиотека профессионала', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (4, 'Эрик Фримен, Элизабет Робсон', 2014, 'ДМК Пресс', 'Head First. Паттерны проектирования', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (5, 'Крейг Уоллс', 2007, 'Вильямс', 'Spring в действии', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (6, 'Lasse Koskela', 2005, 'Вильямс', 'Test Driven: TDD and Acceptance TDD for Java Developers', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (7, 'Кэти Сиерра, Берт Бейтс', 2007, 'Вильямс', 'Изучаем Java', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (8, 'Роберт Седжвик, Кевин Уэйн', 1999, 'МИФ', 'Алгоритмы на Java', NULL);
+INSERT INTO book (id, author, publication_year, publisher, name, isbn) VALUES (9, 'Герберт Шилдт', 2010, 'McGrowHill', 'Java. Полное руководство', NULL);
+
+
+INSERT INTO librarian_room (id_room, id_librarian) VALUES (1, 2);
+INSERT INTO librarian_room (id_room, id_librarian) VALUES (2, 1);
+
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (1, 1, 10, 555);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (1, 2, 5, 333);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (2, 1, 4, 111);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (3, 2, 60, 222);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (4, 2, 20, 100);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (4, 1, 60, 90);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (5, 1, 80, 22);
+INSERT INTO book_places (id_book, id_room, quantity, shell_number) VALUES (6, 2, 10, 777);
+
+INSERT INTO booking_card (id, id_reader, id_book, id_librarian, time, period) VALUES (1, 1, 1, 2, '2019-10-20', '2019-11-20');
