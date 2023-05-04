@@ -15,6 +15,9 @@ CREATE TABLE IF NOT EXISTS gamer
     id_team INT
 );
 
+ALTER TABLE gamer ADD FOREIGN KEY (id_community) REFERENCES community(id);
+ALTER TABLE gamer ADD FOREIGN KEY (id_team) REFERENCES team(id);
+
 CREATE TABLE IF NOT EXISTS community
 (
     id SERIAL PRIMARY KEY,
