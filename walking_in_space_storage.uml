@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e7519e1b-3e52-482b-bdd6-c9d538989d45.SCHEMA:walking_in_space_repository.walking_in_space_storage</OriginalElement>
+  <nodes>
+    <node x="-114.0" y="143.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.statistics</node>
+    <node x="32.5" y="434.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.planet_team</node>
+    <node x="-130.0" y="286.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.planet</node>
+    <node x="222.5" y="434.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team_community</node>
+    <node x="322.0" y="297.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.community</node>
+    <node x="-130.0" y="-93.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.gamer</node>
+    <node x="150.0" y="297.0">e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.statistics" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.gamer" relationship="REFERENCES">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.planet_team" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team" relationship="REFERENCES">
+      <point x="35.75" y="-37.5" />
+      <point x="139.75" y="409.0" />
+      <point x="226.0" y="409.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team_community" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team" relationship="REFERENCES">
+      <point x="-44.75" y="-37.5" />
+      <point x="267.25" y="409.0" />
+      <point x="226.0" y="409.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.team_community" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.community" relationship="REFERENCES">
+      <point x="44.75" y="-37.5" />
+      <point x="356.75" y="409.0" />
+      <point x="398.0" y="409.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.planet_team" target="e7519e1b-3e52-482b-bdd6-c9d538989d45.TABLE:walking_in_space_repository.walking_in_space_storage.planet" relationship="REFERENCES">
+      <point x="-35.75" y="-37.5" />
+      <point x="68.25" y="409.0" />
+      <point x="0.0" y="409.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7218649517684887" showDependencies="false" x="57.9621380846325" y="413.71714922049" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
