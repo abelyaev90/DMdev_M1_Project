@@ -1,0 +1,64 @@
+--W  A  L   K   I   N   G       I   N       S   P   A   C   E--
+
+CREATE DATABASE walking_in_space_repository;
+
+CREATE SCHEMA walking_in_space_storage;
+
+CREATE TABLE IF NOT EXISTS gamer
+(
+    id       SERIAL PRIMARY KEY,
+    login    VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL,
+    name VARCHAR(45) NOT NULL,
+    level VARCHAR(45),
+    id_community INT,
+    id_team INT
+);
+
+ALTER TABLE gamer ADD FOREIGN KEY (id_community) REFERENCES community(id);
+ALTER TABLE gamer ADD FOREIGN KEY (id_team) REFERENCES team(id);
+
+CREATE TABLE IF NOT EXISTS community
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(125)
+);
+
+CREATE TABLE IF NOT EXISTS planet
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(125) NOT NULL,
+    number_of_steps_to_open INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS team
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(125)
+);
+
+CREATE TABLE IF NOT EXISTS statistics
+(
+    id_gamer INT PRIMARY KEY,
+    date DATE NOT NULL,
+    steps INT,
+    FOREIGN KEY (id_gamer) REFERENCES gamer (id)
+);
+
+CREATE TABLE IF NOT EXISTS planet_team
+(
+    id_planet INT NOT NULL,
+    id_team INT NOT NULL,
+    PRIMARY KEY (id_planet, id_team),
+    FOREIGN KEY (id_planet) REFERENCES planet (id),
+    FOREIGN KEY (id_team) REFERENCES team (id)
+);
+
+CREATE TABLE IF NOT EXISTS team_community
+(
+    id_team INT NOT NULL,
+    id_community INT NOT NULL,
+    PRIMARY KEY (id_team, id_community),
+    FOREIGN KEY (id_team) REFERENCES team (id),
+    FOREIGN KEY (id_community) REFERENCES community (id)
+);
