@@ -15,8 +15,16 @@ CREATE TABLE IF NOT EXISTS gamer
     id_team INT
 );
 
-ALTER TABLE gamer ADD FOREIGN KEY (id_community) REFERENCES community(id);
-ALTER TABLE gamer ADD FOREIGN KEY (id_team) REFERENCES team(id);
+ALTER TABLE gamers ADD FOREIGN KEY (id_community) REFERENCES community(id);
+ALTER TABLE gamers ADD FOREIGN KEY (id_team) REFERENCES team(id);
+ALTER TABLE gamer RENAME TO gamers;
+ALTER TABLE gamers  ADD CONSTRAINT uniq UNIQUE (login);
+
+ALTER TABLE gamers ADD FOREIGN KEY (id_community) REFERENCES community(id);
+ALTER TABLE gamers ADD FOREIGN KEY (id_team) REFERENCES team(id);
+
+
+SELECT * FROM gamers;
 
 CREATE TABLE IF NOT EXISTS community
 (
@@ -31,6 +39,8 @@ CREATE TABLE IF NOT EXISTS planet
     number_of_steps_to_open INT NOT NULL
 );
 
+ALTER TABLE planet RENAME COLUMN number_of_steps_to_open TO number_of_steps;
+
 CREATE TABLE IF NOT EXISTS team
 (
     id SERIAL PRIMARY KEY,
@@ -39,11 +49,15 @@ CREATE TABLE IF NOT EXISTS team
 
 CREATE TABLE IF NOT EXISTS statistics
 (
-    id_gamer INT PRIMARY KEY,
+    id INT PRIMARY KEY,
+    id_gamer INT REFERENCES gamers (id),
     date DATE NOT NULL,
-    steps INT,
-    FOREIGN KEY (id_gamer) REFERENCES gamer (id)
+    steps INT
 );
+
+DROP TABLE statistics;
+
+
 
 CREATE TABLE IF NOT EXISTS planet_team
 (
@@ -62,3 +76,4 @@ CREATE TABLE IF NOT EXISTS team_community
     FOREIGN KEY (id_team) REFERENCES team (id),
     FOREIGN KEY (id_community) REFERENCES community (id)
 );
+
